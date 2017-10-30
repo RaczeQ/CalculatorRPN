@@ -21,10 +21,10 @@ namespace Calculator
 {
     public sealed partial class MainPage : Page
     {
-        static string inputString = "";
-        static string errorText = "Given input is an invalid RPN equation!";
-        static SolidColorBrush BLACK = new SolidColorBrush(Colors.Black);
-        static SolidColorBrush RED = new SolidColorBrush(Colors.Red);
+        private static string _inputString = "";
+        private static readonly string ErrorText = "Given input is an invalid RPN equation!";
+        private static readonly SolidColorBrush Black = new SolidColorBrush(Colors.Black);
+        private static readonly SolidColorBrush Red = new SolidColorBrush(Colors.Red);
         public MainPage()
         {
             this.InitializeComponent();
@@ -32,18 +32,18 @@ namespace Calculator
 
         public void ReadInput()
         {
-            inputString = InputTextBox.Text;
+            _inputString = InputTextBox.Text;
         }
 
         public void WriteInput()
         {
             ClearError();
-            InputTextBox.Text = inputString;
+            InputTextBox.Text = _inputString;
         }
 
         public void ClearError()
         {
-            InputTextBox.Foreground = BLACK;
+            InputTextBox.Foreground = Black;
             ErrorBlock.Text = "";
         }
 
@@ -54,8 +54,8 @@ namespace Calculator
 
         public void SetError(string errMsg)
         {
-            InputTextBox.Foreground = RED;
-            ErrorBlock.Text = $"{ errorText } ({ errMsg })";
+            InputTextBox.Foreground = Red;
+            ErrorBlock.Text = $"{ ErrorText } ({ errMsg })";
         }
 
         private void OnKeyDownHandler(object sender, KeyRoutedEventArgs e)
@@ -70,25 +70,23 @@ namespace Calculator
         private void AddNumber(object sender, RoutedEventArgs e)
         {
             ReadInput();
-            inputString += ((Button)sender).Tag;
+            _inputString += ((Button)sender).Tag;
             WriteInput();
         }
 
         private void AddSign(object sender, RoutedEventArgs e)
         {
             ReadInput();
-            inputString += ((Button)sender).Tag;
+            _inputString += ((Button)sender).Tag;
             WriteInput();
         }
 
         private void Backspace(object sender, RoutedEventArgs e)
         {
             ReadInput();
-            if (inputString.Length > 0)
-            {
-                inputString = inputString.Substring(0, inputString.Length - 1);
-                WriteInput();
-            }
+            if (_inputString.Length <= 0) return;
+            _inputString = _inputString.Substring(0, _inputString.Length - 1);
+            WriteInput();
         }
 
         private void Count(object sender, RoutedEventArgs e)
@@ -99,7 +97,7 @@ namespace Calculator
         private void CountValue()
         {
             ReadInput();
-            var inputList = inputString.Split(' ');
+            var inputList = _inputString.Split(' ');
             Stack<double> st = new Stack<double>();
             foreach (var input in inputList)
             {
@@ -141,8 +139,8 @@ namespace Calculator
                 return;
             }
             var value = st.Pop().ToString();
-            SaveLastOperation(inputString, value);
-            inputString = value;
+            SaveLastOperation(_inputString, value);
+            _inputString = value;
             WriteInput();
         }
     }

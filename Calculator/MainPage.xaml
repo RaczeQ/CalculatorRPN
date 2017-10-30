@@ -10,26 +10,29 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
         <TextBox x:Name="InputTextBox" HorizontalAlignment="Left" Margin="50,50,0,0" TextWrapping="Wrap" KeyDown="OnKeyDownHandler" Text="" PlaceholderText="Calculator RPN" VerticalAlignment="Top" IsColorFontEnabled="True" Width="920" Height="50" FontSize="30"/>
-        <Button Click="AddNumber" Tag="7" Content="7" HorizontalAlignment="Left" Margin="50,150,0,0" VerticalAlignment="Top" Width="200" Height="80" FontSize="50"/>
-        <Button Click="AddNumber" Tag="8" Content="8" HorizontalAlignment="Left" Margin="290,150,0,0" VerticalAlignment="Top" Width="200" Height="80" FontSize="50"/>
-        <Button Click="AddNumber" Tag="9" Content="9" HorizontalAlignment="Left" Margin="530,150,0,0" VerticalAlignment="Top" Width="200" Height="80" FontSize="50"/>
-        <Button Click="AddSign" Tag="+" Content="+" HorizontalAlignment="Left" Margin="770,150,0,0" VerticalAlignment="Top" Width="200" Height="80" FontSize="50"/>
-        <Button Click="AddNumber" Tag="4" Content="4" HorizontalAlignment="Left" Margin="50,270,0,0" VerticalAlignment="Top" Width="200" Height="80" FontSize="50"/>
-        <Button Click="AddNumber" Tag="5" Content="5" HorizontalAlignment="Left" Margin="290,270,0,0" VerticalAlignment="Top" Width="200" Height="80" FontSize="50"/>
-        <Button Click="AddNumber" Tag="6" Content="6" HorizontalAlignment="Left" Margin="530,270,0,0" VerticalAlignment="Top" Width="200" Height="80" FontSize="50"/>
+        <TextBlock x:Name="ErrorBlock" HorizontalAlignment="Left" Margin="50,105,0,0" TextWrapping="Wrap" Text="" FontWeight="Bold" VerticalAlignment="Top" IsColorFontEnabled="True" Foreground="Red"/>
+        <TextBlock x:Name="HistoryBlock" HorizontalAlignment="Left" Margin="50,25,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" IsColorFontEnabled="True" Foreground="Gray"/>
+        
+        <Button Click="AddNumber" Tag="0" Content="0" HorizontalAlignment="Left" Margin="290,510,0,0" VerticalAlignment="Top" Width="200" Height="80" FontSize="50"/>
         <Button Click="AddNumber" Tag="1" Content="1" HorizontalAlignment="Left" Margin="50,390,0,0" VerticalAlignment="Top" Width="200" Height="80" FontSize="50"/>
         <Button Click="AddNumber" Tag="2" Content="2" HorizontalAlignment="Left" Margin="290,390,0,0" VerticalAlignment="Top" Width="200" Height="80" FontSize="50"/>
         <Button Click="AddNumber" Tag="3" Content="3" HorizontalAlignment="Left" Margin="530,390,0,0" VerticalAlignment="Top" Width="200" Height="80" FontSize="50"/>
-        <Button Click="AddSign" Tag="*" Content="*" HorizontalAlignment="Left" Margin="770,390,0,0" VerticalAlignment="Top" Width="200" Height="80" FontSize="50"/>
-        <Button Click="AddNumber" Tag="0" Content="0" HorizontalAlignment="Left" Margin="290,510,0,0" VerticalAlignment="Top" Width="200" Height="80" FontSize="50"/>
-        <Button Click="Count" Tag="=" Content="=" HorizontalAlignment="Left" Margin="50,630,0,0" VerticalAlignment="Top" Width="680" Height="80" FontSize="50"/>
-        <Button Click="AddSign" Tag="-" Content="-" HorizontalAlignment="Left" Margin="770,270,0,0" VerticalAlignment="Top" Width="200" Height="80" FontSize="50"/>
-        <Button Click="AddSign" Tag="/" Content="/" HorizontalAlignment="Left" Margin="770,510,0,0" VerticalAlignment="Top" Width="200" Height="80" FontSize="50"/>
-        <Button Click="AddNumber" Tag=" " Content="_" HorizontalAlignment="Left" Margin="50,512,0,0" VerticalAlignment="Top" Width="200" Height="80" FontSize="50"/>
-        <TextBlock x:Name="ErrorBlock" HorizontalAlignment="Left" Margin="50,105,0,0" TextWrapping="Wrap" Text="" FontWeight="Bold" VerticalAlignment="Top" IsColorFontEnabled="True" Foreground="Red"/>
+        <Button Click="AddNumber" Tag="4" Content="4" HorizontalAlignment="Left" Margin="50,270,0,0" VerticalAlignment="Top" Width="200" Height="80" FontSize="50"/>
+        <Button Click="AddNumber" Tag="5" Content="5" HorizontalAlignment="Left" Margin="290,270,0,0" VerticalAlignment="Top" Width="200" Height="80" FontSize="50"/>
+        <Button Click="AddNumber" Tag="6" Content="6" HorizontalAlignment="Left" Margin="530,270,0,0" VerticalAlignment="Top" Width="200" Height="80" FontSize="50"/>
+        <Button Click="AddNumber" Tag="7" Content="7" HorizontalAlignment="Left" Margin="50,150,0,0" VerticalAlignment="Top" Width="200" Height="80" FontSize="50"/>
+        <Button Click="AddNumber" Tag="8" Content="8" HorizontalAlignment="Left" Margin="290,150,0,0" VerticalAlignment="Top" Width="200" Height="80" FontSize="50"/>
+        <Button Click="AddNumber" Tag="9" Content="9" HorizontalAlignment="Left" Margin="530,150,0,0" VerticalAlignment="Top" Width="200" Height="80" FontSize="50"/>
+        
         <Button Click="AddNumber" Tag="." Content="." HorizontalAlignment="Left" Margin="530,510,0,0" VerticalAlignment="Top" Width="200" Height="80" FontSize="50"/>
+        <Button Click="AddNumber" Tag=" " Content="_" HorizontalAlignment="Left" Margin="50,512,0,0" VerticalAlignment="Top" Width="200" Height="80" FontSize="50"/>
+        
+        <Button Click="AddSign" Tag="+" Content="+" HorizontalAlignment="Left" Margin="770,150,0,0" VerticalAlignment="Top" Width="200" Height="80" FontSize="50"/>
+        <Button Click="AddSign" Tag="-" Content="-" HorizontalAlignment="Left" Margin="770,270,0,0" VerticalAlignment="Top" Width="200" Height="80" FontSize="50"/>
+        <Button Click="AddSign" Tag="*" Content="*" HorizontalAlignment="Left" Margin="770,390,0,0" VerticalAlignment="Top" Width="200" Height="80" FontSize="50"/>
+        <Button Click="AddSign" Tag="/" Content="/" HorizontalAlignment="Left" Margin="770,510,0,0" VerticalAlignment="Top" Width="200" Height="80" FontSize="50"/>
+       
+        <Button Click="Count" Tag="=" Content="=" HorizontalAlignment="Left" Margin="50,630,0,0" VerticalAlignment="Top" Width="680" Height="80" FontSize="50"/>
         <Button Click="Backspace" Content="⌫" HorizontalAlignment="Left" Margin="770,630,0,0" VerticalAlignment="Top" Width="200" Height="80" FontSize="50"/>
-        <TextBlock x:Name="HistoryBlock" HorizontalAlignment="Left" Margin="50,25,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" IsColorFontEnabled="True" Foreground="Gray"/>
-
     </Grid>
 </Page>
